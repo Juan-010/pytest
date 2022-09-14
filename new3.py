@@ -18,10 +18,10 @@ values.append([x, y4, 3])
 values.append([x, y5, 4])
 smooth_values = []
 smooth_values.append([x_new, make_interp_spline(x, y1, k=3)(x_new), 0])
-smooth_values.append([x_new, make_interp_spline(x, y2, k=3)(x_new), 1])
-smooth_values.append([x_new, make_interp_spline(x, y3, k=3)(x_new), 2])
-smooth_values.append([x_new, make_interp_spline(x, y4, k=3)(x_new), 3])
-smooth_values.append([x_new, make_interp_spline(x, y5, k=3)(x_new), 4])
+smooth_values.append([x_new, make_interp_spline(x, y2, k=3)(x_new), -0.44])
+smooth_values.append([x_new, make_interp_spline(x, y3, k=3)(x_new), -0.44])
+smooth_values.append([x_new, make_interp_spline(x, y4, k=3)(x_new), -1.47])
+smooth_values.append([x_new, make_interp_spline(x, y5, k=3)(x_new), -1.94])
 
 for i in range(5):
     plt.plot(smooth_values[i][0], smooth_values[i][1], color = colors[i] , label=r"V$_{GS} =$ " + str(smooth_values[i][2]) + r'V')

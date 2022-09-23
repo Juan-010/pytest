@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from scipy.interpolate import make_interp_spline
 #open the file
-with open('TP5_UJT/data.csv', 'r') as csvfile:
+with open('tab.txt', 'r') as csvfile:
     #read the file
     plots = csv.reader(csvfile, delimiter=',')
     #drop first row
@@ -17,8 +17,8 @@ with open('TP5_UJT/data.csv', 'r') as csvfile:
     y = []
     #fill the lists
     for row in plots:
-        x.append(float(row[1]))
-        y.append(float(row[2]))
+        x.append(float(row[0]))
+        y.append(float(row[1]))
     #drop first row
     #smooth the values using splines
     xnew = np.linspace(x[0], x[-1], 1000)

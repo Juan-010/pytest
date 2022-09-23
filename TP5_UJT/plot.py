@@ -7,8 +7,15 @@ import sys
 import matplotlib.pyplot as plt
 import numpy as np
 from scipy.interpolate import make_interp_spline
+#if arg 4 is not set, ask for file
+if len(sys.argv) < 4:
+    #ask for file
+    file = input("File name: ")
+else:
+    file = sys.argv[4]
+
 #open the file
-with open(sys.argv[4], 'r') as csvfile:
+with open(file, 'r') as csvfile:
     #read the file
     plots = csv.reader(csvfile, delimiter=',')
     #drop first row

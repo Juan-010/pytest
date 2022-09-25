@@ -18,8 +18,9 @@ else:
 with open(file, 'r') as csvfile:
     #read the file
     plots = csv.reader(csvfile, delimiter=',')
-    #drop first row
+    #drop first and second row
     next(plots)
+    #next(plots)
     #create empty lists
     x = []
     y = []
@@ -51,17 +52,25 @@ with open(file, 'r') as csvfile:
         colour = sys.argv[3]
     #plot smooth values red
     plt.plot(xnew, ynew, colour)
-    #plot raw values as discrete points
-    plt.plot(x, y, 'o', color=colour)
+
+    dotted = True
+    if dotted:
+        #remove rows 1 and 2 from the list
+        for i in range(3):
+            x.pop(1)
+            y.pop(1)
+        #plot raw values as discrete points
+
+        plt.plot(x, y, 'o', color=colour)
 
     #add gray grid to the plot
     plt.grid(color='gray', linestyle='dashed', linewidth=0.5)
     #add x axis label VB
-    plt.xlabel(r'V$_B$ [V]',labelpad=-5, loc='right')
+    plt.xlabel(r'I$_E$ [mA]',labelpad=0, loc='right')
     #add y axis label Latex I_B and make it horizontal
-    plt.ylabel(r'I$_B$ [mA]', rotation=0, labelpad=-10, loc='top')    
+    plt.ylabel(r'V$_{Eb1}$ [V]', rotation=0, labelpad=-16, loc='top')    
     #set x axis left limit
-    plt.xlim(xmin=0)
+    plt.xlim(0, xmax=x[-1])
     #set y axis left limit
     plt.ylim(ymin=0)
     

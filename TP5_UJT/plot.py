@@ -66,9 +66,9 @@ with open(file, 'r') as csvfile:
     #add gray grid to the plot
     plt.grid(color='gray', linestyle='dashed', linewidth=0.5)
     #add x axis label VB
-    plt.xlabel(r'I$_E$ [mA]',labelpad=0, loc='right')
+    plt.xlabel(r'V$_{Eb1}$ [V]',labelpad=0, loc='right')
     #add y axis label Latex I_B and make it horizontal
-    plt.ylabel(r'V$_{Eb1}$ [V]', rotation=0, labelpad=-16, loc='top')    
+    plt.ylabel(r'I$_E$ [mA]', rotation=0, labelpad=-16, loc='top')    
     #set x axis left limit
     plt.xlim(0, xmax=x[-1])
     #set y axis left limit

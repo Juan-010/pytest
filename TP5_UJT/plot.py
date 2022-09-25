@@ -59,6 +59,11 @@ with open(file, 'r') as csvfile:
     #add x axis label VB
     plt.xlabel(r'V$_B$ [V]')
     #add y axis label Latex I_B and make it horizontal
-    plt.ylabel(r'I$_B$ [mA]', rotation=0, labelpad=20)       
+    plt.ylabel(r'I$_B$ [mA]', rotation=0, labelpad=20)     
+    #set x axis left limit
+    plt.xlim(xmin=0)
+    #set y axis left limit
+    plt.ylim(ymin=0)
+    
     #show the plot
     plt.show()

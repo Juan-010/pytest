@@ -18,8 +18,9 @@ else:
 with open(file, 'r') as csvfile:
     #read the file
     plots = csv.reader(csvfile, delimiter=',')
-    #drop first row
+    #drop first and second row
     next(plots)
+    #next(plots)
     #create empty lists
     x = []
     y = []
@@ -46,24 +47,42 @@ with open(file, 'r') as csvfile:
     #ask for desired color if arg 3 is not set
     if len(sys.argv) < 4:
         print("Which color do you want to use?")
-        color = input("Color: ")
+        colour = input("Color: ")
     else:
-        color = sys.argv[3]
+        colour = sys.argv[3]
     #plot smooth values red
-    plt.plot(xnew, ynew, color)
-    #plot raw values as discrete points
-    plt.plot(x, y, 'bo', color=color)
+    plt.plot(xnew, ynew, colour)
+
+    dotted = True
+    if dotted:
+        #remove rows 1 and 2 from the list
+        for i in range(3):
+            x.pop(1)
+            y.pop(1)
+        #plot raw values as discrete points
+
+        plt.plot(x, y, 'o', color=colour)
 
     #add gray grid to the plot
     plt.grid(color='gray', linestyle='dashed', linewidth=0.5)
     #add x axis label VB
-    plt.xlabel(r'V$_B$ [V]')
+    plt.xlabel(r'V$_{Eb1}$ [V]',labelpad=0, loc='right')
     #add y axis label Latex I_B and make it horizontal
-    plt.ylabel(r'I$_B$ [mA]', rotation=0, labelpad=20)     
+    plt.ylabel(r'I$_E$ [mA]', rotation=0, labelpad=-16, loc='top')    
     #set x axis left limit
-    plt.xlim(xmin=0)
+    plt.xlim(0, xmax=x[-1])
     #set y axis left limit
     plt.ylim(ymin=0)
     
     #show the plot
-    plt.show()
+    #plt.show()
+    #use same scale for x and y axis with adjustable box
+    #plt.gca().set_aspect('equal', adjustable='box')
+
+    #Ask for output file name if arg 5 is not set
+    if len(sys.argv) < 5:
+        output_file = input("Output file name: ")
+    else:
+        output_file = sys.argv[5]
+    #save the plot with high resolution
+    plt.savefig(output_file, dpi=300)
